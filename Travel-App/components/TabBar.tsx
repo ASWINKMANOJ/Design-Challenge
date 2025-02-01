@@ -40,6 +40,7 @@ export default function TabBar({ state, descriptors, navigation }: any) {
 
         return (
           <TabbarButton
+            key={route.key}
             onPress={onPress}
             onLongPress={onLongPress}
             label={label}
@@ -61,12 +62,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#fff",
     marginHorizontal: 50,
-    borderRadius: 32,
-    elevation: 8,
+    borderRadius: 36,
+    elevation: 3,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 10 },
     shadowOpacity: 0.1,
     shadowRadius: 15,
-    padding: 18,
+    padding: 16,
   },
 });
