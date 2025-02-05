@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   profileContainer: {
-    flex: 1,
+    height: 100,
     width: "100%",
     flexDirection: "row",
     alignItems: "center",
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     flexDirection: "row",
-    marginVertical: 12,
+    marginVertical: 6,
     elevation: 10,
     backgroundColor: "#fefefe",
   },
