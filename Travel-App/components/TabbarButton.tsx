@@ -31,18 +31,10 @@ export default function TabbarButton({
     );
   }, [isFocused, scale]);
 
-  const animatedLabelStyle = useAnimatedStyle(() => {
-    const opacity = interpolate(scale.value, [0, 1], [1, 0]);
-
-    return { opacity };
-  });
-
   const animatedIconStyle = useAnimatedStyle(() => {
     const scaleValue = interpolate(scale.value, [0, 1], [1, 1.3]);
-    const translateValue = 8;
-
     return {
-      transform: [{ scale: scaleValue }, { translateY: translateValue }],
+      transform: [{ scale: scaleValue }],
     };
   });
 
@@ -53,17 +45,8 @@ export default function TabbarButton({
       style={styles.tabbarItem}
     >
       <Animated.View style={animatedIconStyle}>
-        {Icons[routeName]({ color: isFocused ? "#ade" : "#233411" })}
+        {Icons[routeName]({ color: isFocused ? "#212529" : "#ffff" })}
       </Animated.View>
-
-      <Animated.Text
-        style={[
-          { color: isFocused ? "#ade" : "#233411", fontSize: 12, marginTop: 4 },
-          animatedLabelStyle,
-        ]}
-      >
-        {label}
-      </Animated.Text>
     </Pressable>
   );
 }
