@@ -7,10 +7,10 @@ export default function TabNavigation() {
       screenOptions={{ headerShown: false }}
       tabBar={(props) => <TabBar {...props} />}
     >
-      <Tabs.Screen name="index" />
-      <Tabs.Screen name="discover" />
-      <Tabs.Screen name="favorite" />
-      <Tabs.Screen name="options" />
+      <Tabs.Screen options={{ title: "Home" }} name="index" />
+      <Tabs.Screen options={{ title: "Discover" }} name="discover" />
+      <Tabs.Screen options={{ title: "Favorite" }} name="favorite" />
+      <Tabs.Screen options={{ title: "Settings" }} name="options" />
     </Tabs>
   );
 }

@@ -57,7 +57,10 @@ export default function TabbarButton({
       </Animated.View>
 
       <Animated.Text
-        style={[{ color: isFocused ? "#ade" : "#233411" }, animatedLabelStyle]}
+        style={[
+          { color: isFocused ? "#ade" : "#233411", fontSize: 12, marginTop: 4 },
+          animatedLabelStyle,
+        ]}
       >
         {label}
       </Animated.Text>
