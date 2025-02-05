@@ -1,13 +1,55 @@
 import { useLinkBuilder, useTheme } from "@react-navigation/native";
-import { StyleSheet, View } from "react-native";
+import { LayoutChangeEvent, StyleSheet, View } from "react-native";
 import TabbarButton from "./TabbarButton";
+import { useState } from "react";
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withSpring,
+} from "react-native-reanimated";
 
 export default function TabBar({ state, descriptors, navigation }: any) {
   const { colors } = useTheme();
   const { buildHref } = useLinkBuilder();
 
+  const [dimensions, setDimensions] = useState({ height: 20, width: 120 });
+
+  const buttonWidth = dimensions.width / state.routes.length;
+
+  const onTabbarLayout = (e: LayoutChangeEvent) => {
+    setDimensions({
+      height: e.nativeEvent.layout.height,
+      width: e.nativeEvent.layout.width,
+    });
+  };
+
+  const tabPositionX = useSharedValue(0);
+
+  const animatedTab = useAnimatedStyle(() => {
+    return {
+      transform: [
+        {
+          translateX: tabPositionX.value,
+        },
+      ],
+    };
+  });
+
   return (
-    <View style={styles.tabbar}>
+    <View onLayout={onTabbarLayout} style={styles.tabbar}>
+      <Animated.View
+        style={[
+          {
+            position: "absolute",
+            backgroundColor: "#fff",
+            borderRadius: 30,
+            height: dimensions.height - 15,
+            width: buttonWidth - 15,
+            marginHorizontal: 6,
+          },
+          animatedTab,
+        ]}
+      />
       {state.routes.map((route: any, index: any) => {
         const { options } = descriptors[route.key];
         const label =
@@ -20,6 +62,9 @@ export default function TabBar({ state, descriptors, navigation }: any) {
         const isFocused = state.index === index;
 
         const onPress = () => {
+          tabPositionX.value = withSpring(buttonWidth * index, {
+            duration: 1200,
+          });
           const event = navigation.emit({
             type: "tabPress",
             target: route.key,
@@ -60,14 +105,14 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    backgroundColor: "#fff",
-    marginHorizontal: 50,
+    backgroundColor: "#212529",
+    marginHorizontal: 32,
     borderRadius: 36,
     elevation: 3,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 10 },
     shadowOpacity: 0.1,
     shadowRadius: 15,
-    padding: 16,
+    paddingVertical: 28,
   },
 });
