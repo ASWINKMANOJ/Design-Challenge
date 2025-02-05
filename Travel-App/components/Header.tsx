@@ -39,7 +39,7 @@ export default function Header() {
         <Pressable
           style={{ ...styles.searchBarIcon, backgroundColor: "transparent" }}
         >
-          <Feather name="search" size={24} color="#2e2e2e" />
+          <Feather name="search" size={24} color="#212529" />
         </Pressable>
         <TextInput
           style={{ flex: 1, paddingHorizontal: 8, fontSize: 16 }}
@@ -78,6 +78,7 @@ const styles = StyleSheet.create({
   profileText: {
     fontSize: 28,
     fontFamily: "Montserrat-SemiBold",
+    color: "#212529",
   },
   searchBar: {
     borderRadius: 30,
@@ -94,7 +95,7 @@ const styles = StyleSheet.create({
     height: 60,
     aspectRatio: 1,
     borderRadius: 30,
-    backgroundColor: "#2E2E2E",
+    backgroundColor: "#212529",
     alignItems: "center",
     justifyContent: "center",
   },
