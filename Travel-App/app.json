@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Travel-App",
-    "slug": "Travel-App",
+    "slug": "travelglide",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -20,7 +20,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.aswinkm.travelglide"
     },
     "web": {
       "bundler": "metro",
@@ -32,6 +33,15 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "2b4aa708-e8c6-4e8c-ad5a-83c7f10e11f3"
+      }
+    },
+    "owner": "aswinkm"
   }
 }

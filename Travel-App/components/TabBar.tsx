@@ -12,7 +12,7 @@ export default function TabBar({ state, descriptors, navigation }: any) {
   const { colors } = useTheme();
   const { buildHref } = useLinkBuilder();
 
-  const [dimensions, setDimensions] = useState({ height: 20, width: 120 });
+  const [dimensions, setDimensions] = useState({ height: 20, width: 1020 });
 
   const buttonWidth = dimensions.width / state.routes.length;
 

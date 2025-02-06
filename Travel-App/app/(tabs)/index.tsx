@@ -13,7 +13,6 @@ export default function Index() {
       <View style={styles.slider}>
         <Slider />
       </View>
-      <View style={styles.box} />
     </View>
   );
 }
@@ -24,11 +23,12 @@ const styles = StyleSheet.create({
   },
   box: {
     height: "15%",
+    backgroundColor: "transparent",
   },
   header: {
     height: "25%",
   },
   slider: {
-    height: "60%",
+    height: "75%",
   },
 });
