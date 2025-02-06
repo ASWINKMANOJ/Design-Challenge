@@ -27,7 +27,7 @@ export default function TripHeader({ active, setActive }: TripHeaderProps) {
             fontWeight: "500",
             color: id === active ? "#ffff" : "black",
             textAlignVertical: "center",
-            fontSize: 14, // Added to make text slightly smaller
+            fontSize: 16,
           }}
         >
           {name}
@@ -45,7 +45,7 @@ export default function TripHeader({ active, setActive }: TripHeaderProps) {
         keyExtractor={(Item) => Item.id}
         horizontal
         showsHorizontalScrollIndicator={false}
-        contentContainerStyle={{ paddingVertical: 14 }} // Reduced padding
+        contentContainerStyle={{ paddingVertical: 18 }}
       />
     </View>
   );
@@ -53,9 +53,9 @@ export default function TripHeader({ active, setActive }: TripHeaderProps) {
 
 const styles = StyleSheet.create({
   container: {
-    height: "15%", // Reduced from 18%
+    height: "16%",
     alignItems: "flex-start",
-    justifyContent: "space-evenly",
+    justifyContent: "center",
   },
   title: {
     fontSize: 26,
@@ -64,10 +64,12 @@ const styles = StyleSheet.create({
   },
   listItem: {
     backgroundColor: "#fff",
-    padding: 8, // Reduced from 8
-    paddingHorizontal: 16, // Reduced from 16
-    marginHorizontal: 8, // Reduced from 8
-    borderRadius: 14, // Slightly reduced from 14
-    elevation: 3, // Reduced from 5 for a more subtle shadow
+    paddingHorizontal: 16,
+    marginHorizontal: 8,
+    borderRadius: 14,
+    elevation: 3,
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 6,
   },
 });
