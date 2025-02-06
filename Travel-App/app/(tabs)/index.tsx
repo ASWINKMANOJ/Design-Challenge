@@ -21,10 +21,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  box: {
-    height: "15%",
-    backgroundColor: "transparent",
-  },
   header: {
     height: "25%",
   },
