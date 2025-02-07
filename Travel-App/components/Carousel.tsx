@@ -53,6 +53,16 @@ const Item = ({
           ),
         },
       ],
+      opacity: interpolate(
+        scrollX.value,
+        [
+          (index - 1) * ITEM_SPACING,
+          index * ITEM_SPACING,
+          (index + 1) * ITEM_SPACING,
+        ],
+        [0.8, 1, 0.8],
+        Extrapolation.CLAMP
+      ),
     };
   });
 
