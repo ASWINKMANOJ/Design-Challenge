@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Image,
   Pressable,
@@ -9,7 +10,7 @@ import {
 import { useFonts } from "expo-font";
 import Feather from "@expo/vector-icons/Feather";
 
-export default function Header() {
+const Header: React.FC = () => {
   const [fontsLoaded] = useFonts({
     "Montserrat-SemiBold": require("../assets/fonts/Montserrat-SemiBold.ttf"),
     "Montserrat-Thin": require("../assets/fonts/Montserrat-Thin.ttf"),
@@ -17,8 +18,9 @@ export default function Header() {
   });
 
   if (!fontsLoaded) {
-    return null; // or a loading screen
+    return null;
   }
+
   return (
     <View style={styles.container}>
       <View style={styles.profileContainer}>
@@ -51,7 +53,7 @@ export default function Header() {
       </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -100,3 +102,5 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
+
+export default Header;

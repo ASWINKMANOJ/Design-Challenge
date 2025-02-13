@@ -4,7 +4,7 @@ export const Destinations = [
     destination: "Paris",
     country: "France",
     ratings: 4.8,
-    reviews: 12543,
+    reviews: 2543,
     image: require("../assets/images/paris.jpg"),
   },
   {
@@ -39,7 +39,7 @@ export const Destinations = [
     destination: "Tokyo",
     country: "Japan",
     ratings: 4.9,
-    reviews: 15432,
+    reviews: 5432,
     image: require("../assets/images/tokyo.jpg"),
   },
 ];

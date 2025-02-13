@@ -1,55 +1,63 @@
-import { Destinations } from "@/constants/Destinations";
-import { Ionicons } from "@expo/vector-icons";
-import { LinearGradient } from "expo-linear-gradient";
+import React from "react";
 import {
-  ImageBackground,
-  View,
-  Text,
-  ImageProps,
   StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  ImageBackground,
   TouchableOpacity,
+  ImageProps,
 } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
+import { MaterialIcons, AntDesign, FontAwesome } from "@expo/vector-icons";
 
-// Define the type for props
-type ItemProps = {
-  country: string;
+const { width } = Dimensions.get("screen");
+
+type Item = {
   destination: string;
+  country: string;
   image: ImageProps;
-  ratings: number;
   reviews: number;
+  ratings: number;
 };
 
-const data: ItemProps = Destinations[0];
-
-export const Card = ({
+const Card: React.FC<Item> = ({
+  destination,
   country,
   image,
-  ratings,
   reviews,
-  destination,
-}: ItemProps) => {
+  ratings,
+}) => {
   return (
-    <View style={styles.container} key={destination}>
-      <ImageBackground source={image} style={styles.image} resizeMode="cover">
+    <View style={styles.container}>
+      <ImageBackground source={image} style={styles.image}>
         <LinearGradient
           colors={["transparent", "rgba(0,0,0,0.8)"]}
           style={styles.gradient}
         >
-          <View style={styles.overlay}>
-            <TouchableOpacity style={styles.iconContainer}>
-              <Ionicons name="heart-outline" size={24} color="white" />
+          <View style={styles.iconContainer}>
+            <TouchableOpacity>
+              <MaterialIcons name="favorite-outline" size={24} color="#fff" />
             </TouchableOpacity>
-            <View
-              style={{
-                alignItems: "flex-start",
-                justifyContent: "space-evenly",
-                width: "100%",
-              }}
-            >
-              <Text style={styles.countryText}>{country}</Text>
-              <Text style={styles.countryText}>{destination}</Text>
-              <Text style={styles.countryText}>{ratings}</Text>
-              <Text style={styles.countryText}>{reviews}</Text>
+          </View>
+          <View style={styles.details}>
+            <Text style={styles.country}>{country}</Text>
+            <Text style={styles.destination}>{destination}</Text>
+            <View style={styles.reviewContainer}>
+              <View style={styles.reviewItem}>
+                <FontAwesome name="comment" size={14} color="#fff" />
+                <Text style={styles.reviews}>{reviews} Reviews</Text>
+              </View>
+              <View style={styles.reviewItem}>
+                <AntDesign name="star" size={14} color="#ffd700" />
+                <Text style={styles.ratings}>{ratings} Ratings</Text>
+              </View>
+            </View>
+            <View style={styles.blurView}>
+              <TouchableOpacity style={styles.seeMoreButton}>
+                <Text style={styles.seeMoreText}>See More</Text>
+                <AntDesign name="arrowright" size={16} color="#fff" />
+              </TouchableOpacity>
             </View>
           </View>
         </LinearGradient>
@@ -60,35 +68,87 @@ export const Card = ({
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: "#ffeedd",
+    width: width - 80, // Adjusted width
+    flex: 1,
+    marginHorizontal: 10, // Adjusted margin
+    borderRadius: 32,
+    overflow: "hidden",
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: 15,
-    overflow: "hidden",
-    marginHorizontal: 20,
   },
   image: {
-    height: 500,
-    width: 300,
-    borderRadius: 15,
-    overflow: "hidden",
+    width: "100%",
+    height: "100%",
+    justifyContent: "flex-end",
   },
   gradient: {
-    height: "100%",
-    width: "100%",
-  },
-  overlay: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "space-between",
-    padding: 15,
+    ...StyleSheet.absoluteFillObject,
+    justifyContent: "flex-end",
+    paddingVertical: 16,
   },
   iconContainer: {
-    alignSelf: "flex-end",
-    padding: 10,
+    position: "absolute",
+    top: 16,
+    right: 16,
+    padding: 8,
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    borderRadius: 16,
   },
-  countryText: {
-    fontSize: 18,
+  details: {
+    padding: 16,
+    alignItems: "flex-start",
+  },
+  destination: {
+    fontSize: 24,
     fontWeight: "bold",
-    color: "white",
+    color: "#fff",
+    marginBottom: 4,
+  },
+  country: {
+    fontSize: 14,
+    color: "rgba(255, 255, 255, 0.7)",
+    marginBottom: 8,
+  },
+  reviewContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: "100%",
+    marginBottom: 16,
+  },
+  reviewItem: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  reviews: {
+    fontSize: 14,
+    color: "#fff",
+    marginLeft: 4,
+  },
+  ratings: {
+    fontSize: 14,
+    color: "#fff",
+    marginLeft: 4,
+  },
+  blurView: {
+    width: "100%",
+    borderRadius: 16,
+    overflow: "hidden",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    backdropFilter: "blur(10px)",
+  },
+  seeMoreButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 12,
+    width: "100%",
+  },
+  seeMoreText: {
+    color: "#fff",
+    fontSize: 14,
+    marginRight: 8,
   },
 });
+
+export default Card;
