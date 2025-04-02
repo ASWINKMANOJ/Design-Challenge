@@ -132,16 +132,16 @@ const styles = StyleSheet.create({
   },
   blurView: {
     width: "100%",
-    borderRadius: 16,
+    borderRadius: 24,
     overflow: "hidden",
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    backgroundColor: "rgba(1, 1, 1, 0.5)",
     backdropFilter: "blur(10px)",
   },
   seeMoreButton: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    paddingVertical: 12,
+    paddingVertical: 16,
     width: "100%",
   },
   seeMoreText: {
