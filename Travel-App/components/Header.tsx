@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Image,
   Pressable,
@@ -11,6 +11,7 @@ import {
 import { useFonts } from "expo-font";
 import Feather from "@expo/vector-icons/Feather";
 import { useRouter } from "expo-router";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Header: React.FC = () => {
   const [fontsLoaded] = useFonts({
@@ -21,8 +22,16 @@ const Header: React.FC = () => {
 
   const useRoute = useRouter();
 
-  const handleLongPress = () => {
-    useRoute.push("/Onboarding");
+  const handleLongPress = async () => {
+    try {
+      await AsyncStorage.clear();
+      console.log("AsyncStorage cleared");
+      useRoute.replace("/Onboarding");
+    } catch (error) {
+      console.error("Error clearing AsyncStorage:", error);
+    } finally {
+      useRoute.replace("/Onboarding");
+    }
   };
 
   if (!fontsLoaded) {
