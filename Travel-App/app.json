@@ -4,7 +4,7 @@
     "slug": "travelglide",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/icon.jpeg",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -39,7 +39,7 @@
         "origin": false
       },
       "eas": {
-        "projectId": "2b4aa708-e8c6-4e8c-ad5a-83c7f10e11f3"
+        "projectId": "a06ae1bf-798f-4b4b-85bb-4527f2e77a32"
       }
     },
     "owner": "aswinkm"
