@@ -86,7 +86,6 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
     borderRadius: 30,
     overflow: "hidden",
-    backgroundColor: "#eddffe",
     elevation: 5,
   },
   profileContainer: {
